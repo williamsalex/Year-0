@@ -12,11 +12,13 @@ def main(NumberOfPolynomials,NumberOfVariables):
 
 def singularFixer(PolyAndVars):
     variables = PolyAndVars[1]
+    variables = set(variables)
+    variables = list(variables)
     ringBuilder = '('+variables[0]
-    for X in variables[0:]:
+    for X in variables[1:]:
         ringBuilder = ringBuilder+','+X
     ringBuilder = str(ringBuilder+')')
-    R = singular.ring('real', ringBuilder, 'dp')
+    R = singular.ring(0, ringBuilder, 'ds')
     a = PolyAndVars[0].split('+',2)[0]
     b = PolyAndVars[0].split('-',2)[0]
     if(len(a)<len(b)):
@@ -25,9 +27,9 @@ def singularFixer(PolyAndVars):
     PolyAndVars = PolyAndVars[0][len(b)+1:]
     PolyAndVars = PolyAndVars+FirstTerm
     polynomial = singular(PolyAndVars)
-    if(polynomial.milnor() != -1):
-        print polynomial
-        print polynomial.milnor()
+    if(polynomial.milnor() != -1 and polynomial.milnor() != 0):
+        print(polynomial)
+        print(polynomial.milnor())
     final = [polynomial, polynomial.milnor()]
     return final
 
@@ -38,8 +40,8 @@ def polygen(varnum):
     for X in range(varnum):
         vars.append(randint(97,122))
         vars[X] = chr(vars[X])
-        coeffs[X] = int(random.uniform(1,30))
-        powers[X] = int(random.uniform(1,30))
+        coeffs[X] = int(random.uniform(1,10))
+        powers[X] = int(random.uniform(1,10))
     newPoly = ''
     for Y in vars:
         if(random.uniform(-1,1)>0):
