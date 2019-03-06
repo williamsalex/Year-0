@@ -1,0 +1,2 @@
+altP1 = Polyhedra(ieqs())
+polytopes.altP1.volume()
