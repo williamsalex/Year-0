@@ -19,8 +19,11 @@ def singularFixer(PolyAndVars):
     R = singular.ring('real', ringBuilder, 'dp')
     a = PolyAndVars[0].split('+',2)[0]
     b = PolyAndVars[0].split('-',2)[0]
-    if(len(a)<len(b)):
+    c = PolyAndVars[0].split('*',2)[0]
+    if(max(a,b,c) ==a):
         b = a
+    if(max(a,b,c) == c):
+        b = c
     FirstTerm = PolyAndVars[0][0:len(b)]
     PolyAndVars = PolyAndVars[0][len(b)+1:]
     PolyAndVars = PolyAndVars+FirstTerm
@@ -42,8 +45,11 @@ def polygen(varnum):
         powers[X] = int(random.uniform(1,30))
     newPoly = ''
     for Y in vars:
-        if(random.uniform(-1,1)>0):
+        c = random.uniform(-1,2)
+        if(c>1):
             newPoly = newPoly+'+'+str(coeffs[vars.index(Y)])+Y+str(powers[vars.index(Y)])
-        else:
+        if(c<0):
             newPoly = newPoly+'-'+str(coeffs[vars.index(Y)])+Y+str(powers[vars.index(Y)])
+        if(c<1 and c>0):
+            newPoly = newPoly+'*'+str(coeffs[vars.index(Y)])+Y+str(powers[vars.index(Y)])
     return (newPoly, vars)
