@@ -2,6 +2,8 @@ import random
 import decimal
 from decimal import *
 from random import uniform
+import re
+_=singular.lib('random.lib')
 _=singular.lib('sing.lib')
 
 def main(NumberOfPolynomials,NumberOfVariables):
@@ -19,21 +21,11 @@ def singularFixer(PolyAndVars):
         ringBuilder = ringBuilder+','+X
     ringBuilder = str(ringBuilder+')')
     R = singular.ring(0, ringBuilder, 'ds')
-    a = PolyAndVars[0].split('+',2)[0]
-    b = PolyAndVars[0].split('-',2)[0]
-    c = PolyAndVars[0].split('*',2)[0]
-    if(max(a,b,c) ==a):
-        b = a
-    if(max(a,b,c) == c):
-        b = c
-    FirstTerm = PolyAndVars[0][0:len(b)]
-    PolyAndVars = PolyAndVars[0][len(b)+1:]
-    PolyAndVars = PolyAndVars+FirstTerm
-    polynomial = singular(PolyAndVars)
+    polynomial = singular.sparsepoly(len(PolyAndVars[1]));"";
     if(polynomial.milnor() != -1 and polynomial.milnor() != 0):
-        print(polynomial)
-        print(polynomial.milnor())
-    final = [polynomial, polynomial.milnor()]
+        final = [polynomial, polynomial.milnor()]
+    else:
+        final = ['NaN']
     return final
 
 def polygen(varnum):
