@@ -1,7 +1,4 @@
-<<<<<<< HEAD
-=======
 import itertools
->>>>>>> b20814619560c0d77c8d748e8e60535a76776f8d
 simplex = Polyhedra(ieqs=[])
 polytopes.altP1.volume()
 def inGen(dimension):
@@ -9,9 +6,6 @@ def inGen(dimension):
     ineqs = []
     builderSet = [0]
     for X in list(range(dimension)):
-<<<<<<< HEAD
-        builderSet.append()
-=======
         ineqs.append([])
     for X in range(len(ineqs)-1):
         for Y in range(dimension):
@@ -45,11 +39,10 @@ def inGenV3(candidates):
     for Y in range(candidates-2,-1,-1):
         ineqs[0].append(Y)
     ineqs = list(itertools.permutations(ineqs[0]))
-    for x in list(range(len(ineqs))):
+    for x in range(len(ineqs)):
         ineqs[x]=list(ineqs[x])
     winner = 0
     for X in range(len(ineqs)):
-        for Y in range(len(ineqs[X])):
-            winner = max(ineqs[Y])
+        winner = ineqs[Y].index(max(ineqs[Y]))
+        print(winner)
     return ineqs
->>>>>>> b20814619560c0d77c8d748e8e60535a76776f8d

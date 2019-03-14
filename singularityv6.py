@@ -46,8 +46,19 @@ def polynomial(variablecount,length):
     variables = variables[0]+variables[2:]+')'
     R = singular.ring(0,variables,'ds')
     poly = singular.sparsepoly(length);"";
+    sagevars = set()
+    sagepoly = str(poly); poly
+    for x in str(poly):
+        if x in possiblevars:
+            sagevars.add(str(x))
+    for z in list(sagevars):
+        for f in range(100):
+            print(sagepoly+z+'+'+str(f))
+            singular(sagepoly+z+'+'+str(f)).milnor()
+    poly1 = poly
     if singular.dim_slocus(poly) == 1:
-        print(poly)
+        if singular.dim_slocus(singular.subst(poly,possiblevars[vars[0]],0)) == 0:
+            print(poly1)
 
 #find the milnor numbers when you test with a large exponent if milnor is below 200 or above 500
 #find ones that have small changes in the milnor numbers when increased by 1
