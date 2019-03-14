@@ -30,6 +30,9 @@ def inGenV2(candidates):
         profiles['profile_'+str(x+1)] = ineqs[x]
     return profiles
 
+def main(candidates):
+    return ineqOrder(inGenV3(candidates))
+
 def inGenV3(candidates):
     candidates = candidates+1
     ineqs = []
@@ -40,8 +43,10 @@ def inGenV3(candidates):
     ineqs = list(itertools.permutations(ineqs[0]))
     for x in list(range(len(ineqs))):
         ineqs[x]=list(ineqs[x])
-    winner = 0
-    for X in range(len(ineqs)):
-        for Y in range(len(ineqs[X])):
-            winner = max(ineqs[Y])
     return ineqs
+
+def ineqOrder(profiles):
+    winner = 0
+    d = [[] for x in range(len(profiles))
+    for Y in range(len(profiles)):
+        winner = ineqs[Y].index(max(ineqs[Y]))
