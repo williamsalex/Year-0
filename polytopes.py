@@ -4,6 +4,7 @@ polytopes.altP1.volume()
 def inGen(dimension):
     dimension = dimension+1
     ineqs = []
+    builderSet = [0]
     for X in list(range(dimension)):
         ineqs.append([])
     for X in range(len(ineqs)-1):
@@ -41,8 +42,15 @@ def inGenV3(candidates):
     for Y in range(candidates-2,-1,-1):
         ineqs[0].append(Y)
     ineqs = list(itertools.permutations(ineqs[0]))
-    for x in list(range(len(ineqs))):
+    for x in range(len(ineqs)):
         ineqs[x]=list(ineqs[x])
+<<<<<<< HEAD
+=======
+    winner = 0
+    for X in range(len(ineqs)):
+        winner = ineqs[Y].index(max(ineqs[Y]))
+        print(winner)
+>>>>>>> origin/master
     return ineqs
 
 def ineqOrder(profiles):

@@ -12,3 +12,5 @@
     std::cout << "The local date and time is:" << dt << std:endl;
     return 0;
   }
+
+// if we can factor out a variable it is not interesting
