@@ -44,6 +44,10 @@ def inGenV3(candidates):
     ineqs = list(itertools.permutations(ineqs[0]))
     for x in range(len(ineqs)):
         ineqs[x]=list(ineqs[x])
+<<<<<<< HEAD
+=======
+
+>>>>>>> 06f17961b025458f58d13f1313961810df4b6c29
     winner = 0
     for X in range(len(ineqs)):
         winner = ineqs[Y].index(max(ineqs[Y]))
