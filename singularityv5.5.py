@@ -21,6 +21,7 @@ def polynomial(variablecount,length):
     final = []
     variables = '('
     s = 0
+    passing = 0
     for X in range(variablecount):
         s = randint(0,50)
         if s not in vars:
@@ -29,14 +30,18 @@ def polynomial(variablecount,length):
     variables = variables[0]+variables[2:]+')'
     R = singular.ring(0,variables,'ds')
     poly = singular.sparsepoly(length);"";
-    poly1 = poly.jacob()
     print(poly)
-    print(poly1)
     if singular.dim_slocus(poly) == 1:
-        if(poly.factorize()[1][2]==poly):
-            print('yahoo')
+        poly1 = singular.jacob(poly)
+        for x in range(1,len(vars)+1):
+            print(poly1[x][len(vars)])
+            print(singular.factorize(poly1[x],1))
+            if(poly1[x]==singular.factorize(poly1[x],1)):
+                passing=passing+1
+        if passing == len(vars):
+            print(poly)
+            passing = 0
 
-def s = absFactorize(p):
 
 
 def polynomial(variablecount,length):
