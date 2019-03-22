@@ -19,6 +19,8 @@ def polynomial(variablecount,length):
         variablecount = 24
     vars = []
     final = []
+    arg1 = randint(length,length*3)
+    arg2 = randint(length*3,length*5)
     variables = '('
     s = 0
     passing = 0
@@ -29,9 +31,9 @@ def polynomial(variablecount,length):
             variables = variables + ',' + possiblevars[s]
     variables = variables[0]+variables[2:]+')'
     R = singular.ring(0,variables,'ds')
-    poly = singular.sparsepoly(length);"";
-    print(poly)
+    poly = singular.sparsepoly(arg1,arg2);"";
     if singular.dim_slocus(poly) == 1:
+        print(poly)
         poly1 = singular.jacob(poly)
         for x in range(1,len(vars)+1):
             print(poly1[x][len(vars)])
