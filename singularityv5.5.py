@@ -1,18 +1,65 @@
+# Loading all libraries and creating a list of the variables that Singular is OK with
 import random
 import decimal
+import thread
+import time
 from decimal import *
 from random import uniform
 import re
+import _thread
+import threading
+from multiprocessing import Pool
+import multiprocessing as mp
 _=singular.lib('random.lib')
 _=singular.lib('sing.lib')
 _=singular.lib('poly.lib')
 _=singular.lib('absfact.lib')
+_=singular.lib('ring.lib')
 possiblevars = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y','Z']
-def auto(Num,variablecount,length):
-    poly = ''
-    successes = []
-    for x in range(Num):
-        poly = polynomial(variablecount,length)
+# Automates the process
+def test(PolyCount,variablecount,length):
+    count = 0
+    total = str(PolyCount)
+    for x in range(PolyCount):
+        ring = ringBuilder(variablecount)
+        polynomial = createPolynomial(ring, length)
+        jacobianMatrix = polynomial.jacob()
+        if singular.dim_slocus(polynomial) == 1:
+                print(polynomial)
+                count = count+1
+        else:
+            print 'Unsuccessful'
+    print(str(count)+" out of "+total+" were successful.")
+
+def ringBuilder(numVars):
+    variables = '('
+    currentVariables = set()
+    for x in range(numVars):
+        x = randint(0,50)
+        if x not in currentVariables:
+            currentVariables.add(x)
+            variables = variables + ',' + possiblevars[x]
+    variables = variables[0]+variables[2:]+')'
+    return singular.ring(0, variables, 'ds')
+
+def createPolynomial(ring, length):
+    return singular.sparsepoly(length,length*2);"";
+
+## ISSUES ##
+### testing not working - ring not being constructed?
+###
+
+def testPolynomial(polynomial):
+    print(polynomial)
+    singular.current_ring()
+    jacobianMatrix = polynomial.jacob()
+    if singular.dim_slocus(polynomial) == 1:
+        if polynomial.factorize()[1][2]==polynomial:
+            return polynomial
+        else:
+            return 'Unsuccessful'
+
+##### OLD CODE #####
 
 def polynomial(variablecount,length):
     if(variablecount > 24):
@@ -21,6 +68,8 @@ def polynomial(variablecount,length):
     final = []
     variables = '('
     s = 0
+    arg1 = randint(length,2*length)
+    arg2 = randint(2*length,3*length)
     for X in range(variablecount):
         s = randint(0,50)
         if s not in vars:
@@ -28,10 +77,9 @@ def polynomial(variablecount,length):
             variables = variables + ',' + possiblevars[s]
     variables = variables[0]+variables[2:]+')'
     R = singular.ring(0,variables,'ds')
-    poly = singular.sparsepoly(length);"";
+    poly = singular.sparsepoly(arg1,arg2);"";
     poly1 = poly.jacob()
-    print(poly)
-    print(poly1)
+    print(singular.is_is(poly1))
     if singular.dim_slocus(poly) == 1:
         if(poly.factorize()[1][2]==poly):
             print('yahoo')
