@@ -70,12 +70,8 @@ def polynomial(variablecount,length):
     arg2 = randint(length*3,length*5)
     variables = '('
     s = 0
-<<<<<<< HEAD
     arg1 = randint(length,2*length)
     arg2 = randint(2*length,3*length)
-=======
-    passing = 0
->>>>>>> 1a39736db055a3be33d628fd37865a1299427e6c
     for X in range(variablecount):
         s = randint(0,50)
         if s not in vars:
@@ -84,11 +80,8 @@ def polynomial(variablecount,length):
     variables = variables[0]+variables[2:]+')'
     R = singular.ring(0,variables,'ds')
     poly = singular.sparsepoly(arg1,arg2);"";
-<<<<<<< HEAD
     poly1 = poly.jacob()
     print(singular.is_is(poly1))
-=======
->>>>>>> 1a39736db055a3be33d628fd37865a1299427e6c
     if singular.dim_slocus(poly) == 1:
         print(poly)
         poly1 = singular.jacob(poly)
