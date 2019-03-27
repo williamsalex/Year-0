@@ -1,7 +1,11 @@
-/Users/alex/fye19/CP2LP2_AWILL.cpp:32:24: error: expected expression
+/Users/alex/fye19/CP2LP2_AWILL.cpp:32:39: error: expected ';' after expression
+        velocity = velocity*sin(angle)
+                                      ^
+                                      ;
+/Users/alex/fye19/CP2LP2_AWILL.cpp:33:24: error: expected expression
         double table = [timesteps][2]
                        ^
-/Users/alex/fye19/CP2LP2_AWILL.cpp:37:16: error: invalid operands to binary expression ('std::__1::string' (aka 'basic_string<char, char_traits<char>, allocator<char> >') and 'double')
+/Users/alex/fye19/CP2LP2_AWILL.cpp:38:16: error: invalid operands to binary expression ('std::__1::string' (aka 'basic_string<char, char_traits<char>, allocator<char> >') and 'double')
         output << table;
         ~~~~~~ ^  ~~~~~
 /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1/ostream:748:1: note: candidate template ignored: could not match 'basic_ostream' against 'basic_string'
@@ -61,24 +65,7 @@ basic_ostream<_CharT, _Traits>& operator<<(
 /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1/iomanip:592:33: note: candidate template ignored: could not match 'basic_ostream' against 'basic_string'
 basic_ostream<_CharT, _Traits>& operator<<(
                                 ^
-/Users/alex/fye19/CP2LP2_AWILL.cpp:38:16: error: no member named 'close' in 'std::__1::basic_string<char>'
+/Users/alex/fye19/CP2LP2_AWILL.cpp:39:16: error: no member named 'close' in 'std::__1::basic_string<char>'
         output.close();
         ~~~~~~ ^
-/Users/alex/fye19/CP2LP2_AWILL.cpp:39:54: error: use of undeclared identifier 'operation'; did you mean 'operator'?
-        cout<<"Your answer is: " << input1 << " " << operation << " " << input2 << " " << "=" << " " << setprecision(5) << ans  << endl;
-                                                     ^~~~~~~~~
-                                                     operator
-/Users/alex/fye19/CP2LP2_AWILL.cpp:39:66: error: expected ';' after expression
-        cout<<"Your answer is: " << input1 << " " << operation << " " << input2 << " " << "=" << " " << setprecision(5) << ans  << endl;
-                                                                 ^
-                                                                 ;
-/Users/alex/fye19/CP2LP2_AWILL.cpp:39:37: error: use of undeclared identifier 'input1'
-        cout<<"Your answer is: " << input1 << " " << operation << " " << input2 << " " << "=" << " " << setprecision(5) << ans  << endl;
-                                    ^
-/Users/alex/fye19/CP2LP2_AWILL.cpp:39:74: error: use of undeclared identifier 'input2'
-        cout<<"Your answer is: " << input1 << " " << operation << " " << input2 << " " << "=" << " " << setprecision(5) << ans  << endl;
-                                                                         ^
-/Users/alex/fye19/CP2LP2_AWILL.cpp:39:124: error: use of undeclared identifier 'ans'
-        cout<<"Your answer is: " << input1 << " " << operation << " " << input2 << " " << "=" << " " << setprecision(5) << ans  << endl;
-                                                                                                                           ^
-8 errors generated.
+4 errors generated.
