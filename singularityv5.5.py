@@ -34,7 +34,7 @@ def test(PolyCount,variablecount,length):
             if singular.is_is(jacobian)[length] == 0:
                 if len(singular.minAssGTZ(polynomial)) == 1:
                     print(polynomial)
-                count = count+1
+                    count = count+1
         count2=count2+1
         print(count2)
     print(str(count)+" out of "+total+" were successful.")
