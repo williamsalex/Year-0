@@ -37,6 +37,7 @@ int main() {
         output.open(output);
         output << table;
         output.close();
+        cout<<"Your answer is: " << input1 << " " << operation << " " << input2 << " " << "=" << " " << setprecision(5) << ans  << endl;
         cout<<"Calculate another?"<<endl;
         cout<<"Enter 'Yes' or 'No'!"<<endl;
         // Prepare to execute next step!
