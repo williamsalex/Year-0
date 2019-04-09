@@ -20,15 +20,23 @@ _=singular.lib('ring.lib')
 possiblevars = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y','Z']
 # Automates the process
 
-def test(PolyCount,variablecount,length):
+class poly():
+    def __init__(self, terms, vars, coeffrange, exprange):
+        self.t = terms
+        self.v = vars
+        self.c = coeffrange
+        self.e = exprange
+
+def test(PolyCount, terms, numvars, coeffrange, exprange):
     print("Number of processors: ", mp.cpu_count())
     P = Process()
     count = 0
     count2 = 0;
     total = str(PolyCount)
     for x in range(PolyCount):
-        ring = ringBuilder(variablecount)
-        polynomial = createPolynomial(ring, length)
+        newpoly = poly(terms, vars,coeffrange,exprange)
+        ring = ringBuilder(vars)
+        polynomial = createPolynomial(variables,newpoly)
         jacobian = polynomial.jacob()
         if singular.dim_slocus(polynomial) == 1:
             if singular.is_is(jacobian)[length] == 0:
@@ -48,7 +56,17 @@ def ringBuilder(numVars):
             currentVariables.add(x)
             variables = variables + ',' + possiblevars[x]
     variables = variables[0]+variables[2:]+')'
+    newpoly.v = list(currentVariables)
     return singular.ring(0, variables, 'ds')
 
-def createPolynomial(ring, length):
-    return singular.sparsepoly(length,length*3,10,1);
+
+def createPolynomial(newpoly):
+    for Y in newpoly.v:
+        c = random.uniform(-1,2)
+        if(c>1):
+            newPoly = newPoly+'+'+newpoly.v[Y]+Y+newpoly.p[Y]
+        if(c<0):
+            newPoly = newPoly+'-'+newpoly.v[Y]+Y+newpoly.p[Y]
+        if(c<1 and c>0):
+            newPoly = newPoly+'*'+newpoly.v[Y]+Y+newpoly.p[Y]
+    return (newPoly, vars)

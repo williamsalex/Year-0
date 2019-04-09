@@ -24,7 +24,7 @@ def test(PolyCount,variablecount,length):
     print("Number of processors: ", mp.cpu_count())
     P = Process()
     count = 0
-    count2 = 0;
+    count2 = 0
     total = str(PolyCount)
     for x in range(PolyCount):
         ring = ringBuilder(variablecount)

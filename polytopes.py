@@ -44,11 +44,9 @@ def inGenV3(candidates):
     ineqs = list(itertools.permutations(ineqs[0]))
     for x in range(len(ineqs)):
         ineqs[x]=list(ineqs[x])
-    for x in range(candidates):
-        winner+str(x) = 0
+    winner = []
     for X in range(len(ineqs)):
         winner = ineqs[X].index(max(ineqs[Y]))
-        print(winner)
     return ineqs
 
 def ineqOrder(profiles):
