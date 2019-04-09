@@ -30,9 +30,9 @@ int main() {
         cin >> timesteps;
         // Do some math!
         velocity = velocity*sin(angle)
-        double table = [timesteps][2]
+        double table[timesteps]
         for (int a = 0; a<timesteps+1;a=a+1){
-          table[a][1] = velocity*a-.5*9.8*pow(a,2)
+          table[a] = velocity*a-.5*9.8*pow(a,2)
         }
         output.open(output);
         output << table;

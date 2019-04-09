@@ -24,15 +24,17 @@ def test(PolyCount,variablecount,length):
     print("Number of processors: ", mp.cpu_count())
     P = Process()
     count = 0
-    count2 = 0;
+    count2 = 0
     total = str(PolyCount)
     for x in range(PolyCount):
         ring = ringBuilder(variablecount)
         polynomial = createPolynomial(ring, length)
-        if singular.is_is(polynomial) == 0:
-            if singular.dim_slocus(polynomial) == 1:
-                print(polynomial)
-                count = count+1
+        jacobian = polynomial.jacob()
+        if singular.dim_slocus(polynomial) == 1:
+            if singular.is_is(jacobian)[length] == 0:
+                if len(singular.minAssGTZ(polynomial)) == 1:
+                    print(polynomial)
+                    count = count+1
         count2=count2+1
         print(count2)
     print(str(count)+" out of "+total+" were successful.")
@@ -49,7 +51,7 @@ def ringBuilder(numVars):
     return singular.ring(0, variables, 'ds')
 
 def createPolynomial(ring, length):
-    return singular.sparsepoly(length,length*2,1,1);
+    return singular.sparsepoly(length,length*3,10,1);
 
 p_iter = pyprocessing()
 P = parallel(p_iter=p_iter)

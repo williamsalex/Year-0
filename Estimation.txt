@@ -1,0 +1,40 @@
+Alex Williams
+Engineering Estimation Assignment
+1.
+a) The height of a nearby tall tree on campus
+10 - 100 feet
+b) The mass of a car
+1000 - 10000 pounds
+c) The number of water drops in a bathtub
+100000 - 1000000 drops
+d) The amount of money spent in Curry Student Center food court at lunch on Wednesday
+1000 - 10000 dollars
+e) The number of undergraduate students in Massachusetts
+100000 - 1000000 students
+2. Air mass in FYELIC
+the FYELIC is about 100x200 ft, and about 12 feet tall
+that gives an area of 240000 ft cubed
+air has a density of 0.75 lb per foot
+giving 180,000 lb mass
+Variance: 100,000-1,000,000
+3. Bandwidth of a 747 crossing the Atlantic full of CDs
+A 747 is approximately 20 feet tall and 200 feet long
+Each CD is 0.01 inches thick and 5 inches in diameter with a density of 1.22 g/cm
+Thus 80,000 CDs can fit into the 747
+Each CD holds 5GB of data
+Thus 400,000 GB can be transported at a time
+Variance: 100,000 - 1,000,000 GB
+Thus 566990460 GB can be moved by the plane per trip
+A transatlantic cable can accomodate 60000 GB per second
+It would take 9450 seconds for the cable to transmit the same amount of data as the plane
+4. The orbital period near the Earth's surface is roughly 1.5 hours. Estimate the distance to the moon.
+The earth is approximately 13000 km in diameter and 1.3e24 pounds
+The moon is approximately 1.7e23 pounds
+The orbital period of the moon is approximately 29 days
+Thus the diameter of the orbit is approximately 400,000 km
+Variance: 100,000 - 1,000,000 km
+5. The 2018 Boston Marathon has ~30000 registered runners, how many toilets will be needed for the event.
+Each use of the bathroom takes an approximate average of one minute
+If one in every two people uses the bathroom, it would take 15000 minutes for one bathroom
+With 1500 bathrooms it would take 10 minutes, so assuming that it 5 minutes is an ok wait time
+If one in eight use the bathroom at a time, there should be 750 bathrooms total
