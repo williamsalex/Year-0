@@ -1,4 +1,4 @@
-# Loading all libraries and creating a list of the variables that Singular is OK with
+# check to make sure all libraries are necessary
 import random
 import decimal
 import thread
@@ -11,6 +11,8 @@ _=singular.lib('poly.lib')
 _=singular.lib('absfact.lib')
 _=singular.lib('ring.lib')
 
+# Polynomial class containing the desired attributes which createPolynomial can access to reduce cross function transmission of data
+
 class poly():
     def __init__(self, terms, maxcoeff, maxexp):
         self.t = terms
@@ -20,36 +22,28 @@ class poly():
 def test(attempts, terms, maxcoeff, maxexp):
     count = 0
     total = str(attempts)
+    current = singular.ring(0,'(x,y,z)','ds')
     for x in range(attempts):
-        ring = singular.ring(0,'(x,y,z)','ds')
         num = 0
         polys = []
         while num < 2:
-            print(polys)
+            count = count+1
             newpoly = poly(terms, maxcoeff,maxexp)
             polynomial = singular(str(createPolynomial(newpoly)))
             if singular.dim_slocus(polynomial)==2:
                 polys.append(polynomial)
             if len(polys) == 2:
+                print(polys)
                 multipliedPoly = polys[0]*polys[1]
                 polys = []
-                if singular.dim_slocus(multipliedPoly) == 1:
+                if singular.dim_slocus(multipliedPoly) ==1:
+                    print(multipliedPoly)
+                if singular.dim_slocus(multipliedPoly) == 1 and singular.is_is(multipliedPoly.jacob())==0 and len(singular.minAssGTZ(multipliedPoly))==1:
                     print(multipliedPoly)
                     count=count+1
                     num = num+1
-                    print(str(count)+" out of "+total+" were successful.")
-                    quit()
     print(str(count)+" out of "+total+" were successful.")
     return 0
-
-
-#        print(polynomial)
-#        jacobian = polynomial.jacob()
-#        if singular.dim_slocus(polynomial) == 1:
-#            if singular.is_is(jacobian) == 0:
-#                if len(singular.minAssGTZ(polynomial)) == 1:
-#                    print(polynomial)
-#                    count = count+1
 
 def createPolynomial(newpoly):
     polystring = ''
@@ -72,6 +66,7 @@ def createPolynomial(newpoly):
                 if hasvar!=0:
                     if Y != newpoly.t-1:
                         polystring = polystring+'+'
+                        hasvar=0
                         break
                     else:
                         f = False
