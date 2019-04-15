@@ -1,18 +1,6 @@
-/Users/alex/fye19/CP2HP1_AWILL.cpp:29:28: error: use of undeclared identifier 'line'; did you mean 'file'?
-    while (getline(myfile, line))
-                           ^~~~
-                           file
-/Users/alex/fye19/CP2HP1_AWILL.cpp:16:8: note: 'file' declared here
-string file,year,gender;
-       ^
-/Users/alex/fye19/CP2HP1_AWILL.cpp:31:15: error: use of undeclared identifier 'line'; did you mean 'file'?
-      cout << line << '\n';
-              ^~~~
-              file
-/Users/alex/fye19/CP2HP1_AWILL.cpp:16:8: note: 'file' declared here
-string file,year,gender;
-       ^
-/Users/alex/fye19/CP2HP1_AWILL.cpp:35:5: error: 'break' statement not in loop or switch statement
-    break;
-    ^
-3 errors generated.
+ld: warning: ignoring file /Users/alex/fye19/CP2LP1_AWILL, file was built for unsupported file format ( 0x2F 0x2A 0x20 0x43 0x2B 0x2B 0x20 0x4C 0x61 0x62 0x20 0x23 0x32 0x20 0x4C 0x61 ) which is not the architecture being linked (x86_64): /Users/alex/fye19/CP2LP1_AWILL
+Undefined symbols for architecture x86_64:
+  "_main", referenced from:
+     implicit entry/start for main executable
+ld: symbol(s) not found for architecture x86_64
+clang: error: linker command failed with exit code 1 (use -v to see invocation)

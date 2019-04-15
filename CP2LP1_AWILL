@@ -1,0 +1,42 @@
+/* C++ Lab #2 Lab Part 1
+* A.Williams
+* Nobody
+* Lab Two
+* Do math
+*/
+// Get libraries!
+#include <iostream>
+using namespace std;
+#include <iomanip>
+#include <cmath>
+#include <limits>
+#include <fstream>
+#include <string>
+float n1;
+float n2;
+char o;
+float r;
+str status;
+int main(){
+  while status != "NO"{
+  cout<<"Welcome User! This program is a calculator! Please enter your desired operator, or enter 'NO' to end!"<<endl;
+  cin>>o;
+  cout<<"Please enter your first value!"<<endl;
+  cin>>n1;
+  cout<<"Please enter your second value!"<<endl;
+  cin>>n2;
+  switch(o) {
+    case '+':
+    cout<<n1+n2<<endl;
+    case '-':
+    cout<<n1-n2<<endl
+    case '*':
+    cout<<n1*n2<<endl;
+    case '/':
+    cout<<n1/n2<<endl;
+    default :
+    cout<<"Invalid input! Please try again!"<<endl;
+  }
+}
+return 0;
+}
