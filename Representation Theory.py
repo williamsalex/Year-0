@@ -20,6 +20,19 @@ def inGenV3(candidates):
     return ineqs
 .sort()
 
+def createProfiles(candidates):
+    profileBase = [X for X in range(candidates)]
+    profileBase = list(itertools.permutations(profileBase))
+    print(profileBase)
+    currentINTlist = []
+    for X in profileBase:
+        for Y in X:
+            currentINT = currentINT.append(Y)
+    profileBase = profileBase.sort(reverse=True)
+    return profileBase
+
+
+
 def profileGen(candidates):
     candidatelist = []
     for X in range(candidates):
@@ -31,7 +44,7 @@ def ineqOrder(profiles):
         winner = ineqs[Y].index(max(ineqs[Y]))
 
 profiles = ["ABCD","ABDC","ACBD","ACDB","ADBC","ADCB","BACD","BADC","BCAD","BCDA","BDAC","BDCA","CABD","CADB","CBAD","CBDA","CDAB","CDBA","DABC","DACB","DBAC","DBCA","DCAB","DCBA"]
-
+              1      2      3       4     5      6      7     8        9     10      11    12      13    14     15     16      17    18     19      20    21     22      23    24
 scorelist = []
 
 for X in range(len(profiles)):

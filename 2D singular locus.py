@@ -11,7 +11,7 @@ _=singular.lib('poly.lib')
 _=singular.lib('absfact.lib')
 _=singular.lib('ring.lib')
 
-# Polynomial class containing the desired attributes which createPolynomial can access to reduce cross function transmission of data
+# generates trivariate polynomials and multiplies them together before testing
 
 class poly():
     def __init__(self, terms, maxcoeff, maxexp):
@@ -33,8 +33,8 @@ def test(attempts, terms, maxcoeff, maxexp):
             if singular.dim_slocus(polynomial)==2:
                 polys.append(polynomial)
             if len(polys) == 2:
-                print(polys)
                 multipliedPoly = polys[0]*polys[1]
+                print(multipliedPoly)
                 polys = []
                 if singular.dim_slocus(multipliedPoly) ==1:
                     print(multipliedPoly)
@@ -44,6 +44,7 @@ def test(attempts, terms, maxcoeff, maxexp):
                     num = num+1
     print(str(count)+" out of "+total+" were successful.")
     return 0
+    # no common factors, one dimension singular sets
 
 def createPolynomial(newpoly):
     polystring = ''
