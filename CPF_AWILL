@@ -1,0 +1,28 @@
+/* C++ Final Lab
+* A.Williams
+* Nobody
+* Final Lab
+* Sort books
+*/
+// Get libraries!
+#include <iostream>
+using namespace std;
+#include <iomanip>
+#include <cmath>
+#include <limits>
+#include <fstream>
+#include <string>
+string list;
+string output;
+int main(){
+  cout<<"Please enter the name of a file of a list of books!"<<endl;
+  cin >> list;
+  cout<<"Please enter the name of the file where you would like the alphabetized list to go!"<<endl;
+  cin >> output;
+  input.open(list);
+  output.open(output);
+  while (input.eof()==0){
+    cout<<input<<endl;
+  }
+  return 0;
+}

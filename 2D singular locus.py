@@ -47,6 +47,7 @@ def test(attempts, terms, maxcoeff, maxexp):
     # no common factors, one dimension singular sets
 
 def createPolynomial(newpoly):
+    # ONLY TRIVARIATE
     polystring = ''
     for Y in range(newpoly.t):
         polystring = polystring+str(int(random.uniform(1,newpoly.c)))

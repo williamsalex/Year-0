@@ -23,11 +23,39 @@ def inGenV3(candidates):
 def createProfiles(candidates):
     profileBase = [X for X in range(candidates)]
     profileBase = list(itertools.permutations(profileBase))
-    print(profileBase)
+    string = ""
     currentINTlist = []
     for X in profileBase:
         for Y in X:
-            currentINT = currentINT.append(Y)
+            string = string+str(Y)
+        currentINTlist.append(string)
+        string = ""
+    for X in range(len(currentINTlist)):
+        currentINTlist[X] = int(currentINTlist[X])
+    currentINTlist = sorted(currentINTlist, reverse=True)
+    for X in range(len(currentINTlist)):
+        currentINTlist[X] = str(currentINTlist[X])
+    for X in range(len(currentINTlist)):
+        if len(currentINTlist[X]) != candidates:
+            currentINTlist[X] = "0"+currentINTlist[X]
+    return currentINTlist
+
+def findWinners(candidates, profiles):
+    pointsList = []
+    for X in range(candidates):
+        pointsList.append([])
+        for Y in range(len(profiles)):
+            pointsList[X].append([0,profiles[Y]])
+    for X in range(candidates):
+        for Y in range(len(profiles)):
+            print((candidates-1)-profiles[Y].find(str(X)))
+            pointsList[X][Y][0] = (candidates-1)-profiles[Y].find(str(X))
+    return pointsList
+
+
+    for X in profileBase:
+        for Y in X:
+            currentINTlist.append(Y)
     profileBase = profileBase.sort(reverse=True)
     return profileBase
 
