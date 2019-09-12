@@ -1,2 +1,1 @@
-# fye19
-First year engineering at Northeastern University
+A mess of first year engineering.
